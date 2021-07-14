@@ -3,7 +3,7 @@ class DailyEntry < ActiveRecord::Migration[6.1]
     t.string :title
     t.date :date
     t.text :content
-    t.belongs_to :user, class_name: "user", foreign_key: "user_id"
+    t.belongs_to :user, null: false, foreign_key: true
     
     
   end
