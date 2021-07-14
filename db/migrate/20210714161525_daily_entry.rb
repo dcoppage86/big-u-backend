@@ -1,4 +1,4 @@
-class DailyEntry < ActiveRecord::Migration[6.1]
+class DailyEntries < ActiveRecord::Migration[6.1]
   def change
     t.string :title
     t.date :date
