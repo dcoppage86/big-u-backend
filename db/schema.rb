@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_07_14_212433) do
     t.string "childs_name"
     t.string "username"
     t.string "email"
-    t.string "password_digest"
+    t.string "password"
     t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
