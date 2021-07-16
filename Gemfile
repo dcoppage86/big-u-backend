@@ -18,6 +18,9 @@ gem 'puma', '~> 5.0'
 # Frontend Auth
 gem 'jwt'
 
+# serializer
+gem 'active_model_serializers', '~> 0.10.0'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :categories
       resources :libraries
       resources :daily_entries
+      resources :comments
       resources :users, only: [:create, :profile]
       get 'auth/create'
     end
