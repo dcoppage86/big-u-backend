@@ -13,9 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_07_16_131902) do
 
   create_table "categories", force: :cascade do |t|
-    t.string "category_1"
-    t.string "category_2"
-    t.string "category_3"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -47,11 +45,9 @@ ActiveRecord::Schema.define(version: 2021_07_16_131902) do
     t.string "book_url"
     t.string "image_url"
     t.integer "category_id", null: false
-    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_libraries_on_category_id"
-    t.index ["user_id"], name: "index_libraries_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -70,5 +66,4 @@ ActiveRecord::Schema.define(version: 2021_07_16_131902) do
 
   add_foreign_key "daily_entries", "users"
   add_foreign_key "libraries", "categories"
-  add_foreign_key "libraries", "users"
 end

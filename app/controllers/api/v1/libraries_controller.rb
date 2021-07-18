@@ -1,6 +1,6 @@
 class Api::V1::LibrariesController < ApplicationController
 
-    def def index
+    def index
         @libraries = Library.all
         render json: @libraries
     end
