@@ -13,9 +13,9 @@
 ActiveRecord::Schema.define(version: 2021_07_16_131902) do
 
   create_table "categories", force: :cascade do |t|
-    t.string "children"
-    t.string "parents"
-    t.string "adult"
+    t.string "category_1"
+    t.string "category_2"
+    t.string "category_3"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
