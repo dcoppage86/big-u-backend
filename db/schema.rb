@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 2021_07_16_131902) do
     t.string "title"
     t.text "content"
     t.integer "user_id"
-    t.integer "daily_entry_id"
+    t.integer "library_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["daily_entry_id"], name: "index_comments_on_daily_entry_id"
+    t.index ["library_id"], name: "index_comments_on_library_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -62,8 +62,10 @@ ActiveRecord::Schema.define(version: 2021_07_16_131902) do
     t.string "email"
     t.string "password_digest"
     t.string "image_url"
+    t.integer "library_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["library_id"], name: "index_users_on_library_id"
   end
 
   add_foreign_key "daily_entries", "users"

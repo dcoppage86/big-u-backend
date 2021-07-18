@@ -5,5 +5,5 @@ class User < ApplicationRecord
     validates :username, length: {minimum: 5}
 
     has_many :daily_entries
-    has_one :library
+    belongs_to :library
 end
