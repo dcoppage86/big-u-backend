@@ -24,8 +24,10 @@ ActiveRecord::Schema.define(version: 2021_07_16_131902) do
     t.string "title"
     t.text "content"
     t.integer "user_id"
+    t.integer "daily_entry_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["daily_entry_id"], name: "index_comments_on_daily_entry_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -58,7 +60,7 @@ ActiveRecord::Schema.define(version: 2021_07_16_131902) do
     t.string "childs_name"
     t.string "username"
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
     t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
