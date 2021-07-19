@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   
   namespace :api do
     namespace :v1 do
+      resources :collections
       resources :categories
-      resources :libraries
       resources :daily_entries
       resources :comments
+      resources :books
       resources :users
       get 'auth/create'
     end

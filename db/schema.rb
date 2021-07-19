@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_16_131902) do
+ActiveRecord::Schema.define(version: 2021_07_19_191937) do
+
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "book_url"
+    t.string "image_url"
+    t.integer "category_id", null: false
+    t.integer "user_id", null: false
+    t.integer "collection_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_books_on_category_id"
+    t.index ["collection_id"], name: "index_books_on_collection_id"
+    t.index ["user_id"], name: "index_books_on_user_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -32,22 +53,10 @@ ActiveRecord::Schema.define(version: 2021_07_16_131902) do
   create_table "daily_entries", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.boolean "completed"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_daily_entries_on_user_id"
-  end
-
-  create_table "libraries", force: :cascade do |t|
-    t.string "title"
-    t.string "author"
-    t.string "book_url"
-    t.string "image_url"
-    t.integer "category_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_libraries_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,13 +66,14 @@ ActiveRecord::Schema.define(version: 2021_07_16_131902) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.string "image_url"
-    t.integer "library_id"
+    t.integer "collection_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["library_id"], name: "index_users_on_library_id"
+    t.index ["collection_id"], name: "index_users_on_collection_id"
   end
 
+  add_foreign_key "books", "categories"
+  add_foreign_key "books", "collections"
+  add_foreign_key "books", "users"
   add_foreign_key "daily_entries", "users"
-  add_foreign_key "libraries", "categories"
 end
