@@ -5,11 +5,11 @@ class Api::V1::BooksController < ApplicationController
     end
 
     def create
-        @book = Book.new(params[:book])
+        @book = Book.new(book_params)
         if @book.save
           render json: @book
         else
-          render json: {@book.errors.full_messages}, status: :unprocessable_entity
+          render json: { errors: @book.errors.full_messages }, status: :unprocessable_entity
         end
     end
 
@@ -19,7 +19,7 @@ class Api::V1::BooksController < ApplicationController
             @book.destroy
             render json: @book, status: :accepted
         else
-            render json: {errors: @book.errors.full_messages}
+            render json: { errors: @book.errors.full_messages }
         end
     end
 
