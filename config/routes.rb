@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :categories
       resources :daily_entries
       resources :comments
-      resources :books
+      resources :books, only: [:index, :create, :destroy]
       resources :users
       get 'auth/create'
     end
