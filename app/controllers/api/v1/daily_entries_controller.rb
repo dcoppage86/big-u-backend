@@ -16,13 +16,19 @@ class Api::V1::DailyEntriesController < ApplicationController
     end
 
     def update
-        @daily_entry = DailyEntry.find(params[:id])
-        if @daily_entry.update_attributes(daily_entry_params)
-          flash[:success] = "DailyEntry was successfully updated"
-          redirect_to @daily_entry
+        if @daily_entry && @daily_entry.update(daily_entry_params)
+          render json: @daily_entry, status: :accepted
         else
-          flash[:error] = "Something went wrong"
-          render 'edit'
+            render json: { errors: @daily_entry.errors.full_messages }
+        end
+    end
+
+    def destroy
+        if @daily_entry
+            @daily_entry.destroy
+            render json: @daily_entry, status: :accepted
+        else
+            render json: { errors: @daily_entry.errors.full_messages }
         end
     end
     
