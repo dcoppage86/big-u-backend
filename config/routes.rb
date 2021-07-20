@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   
   namespace :api do
     namespace :v1 do
-      resources :collections
-      resources :categories
-      resources :daily_entries
-      resources :comments
+      resources :collections, only: [:index]
+      resources :categories, only: [:index]
+      resources :daily_entries, only: [:index, :create, :update, :destroy]
+      resources :comments, only: [:index, :create, :destroy]
       resources :books, only: [:index, :create, :destroy]
-      resources :users
+      resources :users, only: [:index, :create, :destroy]
       get 'auth/create'
     end
   end
