@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :daily_entries, only: [:index, :create, :update, :destroy]
       resources :comments, only: [:index, :create, :destroy]
       resources :books, only: [:index, :create, :destroy]
-      resources :users, only: [:index, :create, :destroy]
+      resources :users, only: [:index, :show, :create, :destroy]
       get 'auth/create'
     end
   end
