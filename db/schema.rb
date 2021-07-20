@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 2021_07_19_191937) do
     t.string "title"
     t.text "content"
     t.integer "user_id"
-    t.integer "library_id"
+    t.integer "book_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["library_id"], name: "index_comments_on_library_id"
+    t.index ["book_id"], name: "index_comments_on_book_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 

@@ -4,7 +4,7 @@ class CreateComments < ActiveRecord::Migration[6.1]
       t.string :title
       t.text :content
       t.belongs_to :user
-      t.belongs_to :library
+      t.belongs_to :book
 
       t.timestamps
     end
