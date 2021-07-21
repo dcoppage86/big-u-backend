@@ -2,8 +2,14 @@ class Api::V1::DailyEntriesController < ApplicationController
     before_action :get_daily_entry, only: [:update, :delete]
     
     def index
-        @daily_entries = DailyEntry.all
-        render json: @daily_entries
+        if logged_in?
+            @daily_entries = current_user.daily_entries
+            render json: @daily_entries
+        else
+            render json: {
+                error: "You need to login to see your daily entries"
+            }
+        end
     end
 
     def create
