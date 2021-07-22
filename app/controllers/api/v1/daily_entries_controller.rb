@@ -17,7 +17,7 @@ class Api::V1::DailyEntriesController < ApplicationController
         if @daily_entry.save
           render json: @daily_entry
         else
-          render json:{ @daily_entry.errors.full_messages }, status: :unprocessable_entity
+          render json:{ errors: @daily_entry.errors.full_messages }, status: :unprocessable_entity
         end
     end
 
