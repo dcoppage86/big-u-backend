@@ -4,7 +4,7 @@ class Api::V1::DailyEntriesController < ApplicationController
     def index
         if logged_in?
             @daily_entries = current_user.daily_entries
-            render json: @daily_entries
+            render json: DailyEntrySerializer.new(@daily_entries)
         else
             render json: {
                 error: "You need to login to see your daily entries"
