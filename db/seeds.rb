@@ -9,7 +9,7 @@ collections = Collection.create([
     {title: "Resources"}
 ])
 
-dakota = User.create(first_name: "Dakota", last_name: "Coppage", childs_name: "Fynleigh", username: "dcoppage86", email: "dakotakcoppage@me.com", password: "password", collection_id: 1)
+dakota = User.create(first_name: "Dakota", last_name: "Coppage", childs_name: "Fynleigh", username: "dcoppage86", email: "dakotakcoppage@me.com", password: "password")
 
 dakota.daily_entries.create([
     { title: "Today was a good day...", content: "Today we did stuff that didnt drive me completely insane", user_id: 1 }
