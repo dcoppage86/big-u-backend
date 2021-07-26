@@ -66,10 +66,8 @@ ActiveRecord::Schema.define(version: 2021_07_19_191937) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.integer "collection_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["collection_id"], name: "index_users_on_collection_id"
   end
 
   add_foreign_key "books", "categories"
