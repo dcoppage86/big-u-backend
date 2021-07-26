@@ -3,6 +3,9 @@ class User < ApplicationRecord
     validates :username, presence: true
     validates :username, uniqueness: true
     validates :username, length: {minimum: 5}
+    validates :first_name, :last_name, presence: true
+    validates :email, presence: true, uniqueness: true
+    validates :username, uniqueness: true
 
     has_many :daily_entries
     has_many :comments
