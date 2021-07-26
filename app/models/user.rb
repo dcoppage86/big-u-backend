@@ -7,8 +7,7 @@ class User < ApplicationRecord
     validates :email, presence: true, uniqueness: true
     validates :username, uniqueness: true
 
-    has_many :daily_entries
+    has_many :daily_entries, dependent: :destroy
     has_many :comments
     has_many :books
-    belongs_to :collection
 end
