@@ -1,5 +1,5 @@
 class Api::V1::DailyEntriesController < ApplicationController
-    before_action :get_daily_entry, only: [:update, :delete]
+    before_action :get_daily_entry, only: [:show, :delete]
     
     def index
         if logged_in?
@@ -12,8 +12,13 @@ class Api::V1::DailyEntriesController < ApplicationController
         end
     end
 
+    def show
+        render json: @daily_entry
+      end
+    
+
     def create
-        @daily_entry = DailyEntry.new(params[:daily_entry])
+        @daily_entry = current_user.daily_entries.new(daily_entry_params)
         if @daily_entry.save
           render json: @daily_entry
         else
@@ -21,18 +26,10 @@ class Api::V1::DailyEntriesController < ApplicationController
         end
     end
 
-    def update
-        if @daily_entry && @daily_entry.update(daily_entry_params)
-          render json: @daily_entry, status: :accepted
-        else
-            render json: { errors: @daily_entry.errors.full_messages }
-        end
-    end
-
     def destroy
         if @daily_entry
             @daily_entry.destroy
-            render json: @daily_entry, status: :accepted
+            render json: {data: "Entry was successfully deleted"}, status: :ok
         else
             render json: { errors: @daily_entry.errors.full_messages }
         end
