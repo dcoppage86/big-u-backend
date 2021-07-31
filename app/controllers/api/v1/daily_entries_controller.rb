@@ -1,5 +1,5 @@
 class Api::V1::DailyEntriesController < ApplicationController
-    before_action :get_daily_entry, only: [:show, :delete]
+    before_action :get_daily_entry, only: [:show, :destroy]
     
     def index
         if logged_in?
