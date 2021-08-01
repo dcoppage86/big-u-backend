@@ -20,7 +20,7 @@ class Api::V1::DailyEntriesController < ApplicationController
     def create
         @daily_entry = current_user.daily_entries.new(daily_entry_params)
         if @daily_entry.save
-          render json: @daily_entry
+          render json: DailyEntrySerializer.new(@daily_entry)
         else
           render json:{ errors: @daily_entry.errors.full_messages }, status: :unprocessable_entity
         end
