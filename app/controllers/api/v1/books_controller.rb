@@ -5,9 +5,9 @@ class Api::V1::BooksController < ApplicationController
     end
 
     def create
-        @book = Book.new(book_params)
+        @book = current_user.books.new(book_params)
         if @book.save
-          render json: @book
+          render json: BookSerializer.new(@book)
         else
           render json: { errors: @book.errors.full_messages }, status: :unprocessable_entity
         end
@@ -26,7 +26,7 @@ class Api::V1::BooksController < ApplicationController
     private
     
     def book_params
-        params.require(:book).permit(:title, :author, :book_url, :image_url, :category_id, :user_id, :collection_id)
+        params.require(:book).permit(:book_title, :book_author, :book_url, :image_url, :user_id)
     end
     
     

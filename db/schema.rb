@@ -10,44 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_19_191937) do
+ActiveRecord::Schema.define(version: 2021_07_18_221813) do
 
   create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.string "author"
+    t.string "book_title"
+    t.string "book_author"
     t.string "book_url"
     t.string "image_url"
-    t.integer "category_id", null: false
     t.integer "user_id", null: false
-    t.integer "collection_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_books_on_category_id"
-    t.index ["collection_id"], name: "index_books_on_collection_id"
     t.index ["user_id"], name: "index_books_on_user_id"
-  end
-
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "collections", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.integer "user_id"
-    t.integer "book_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["book_id"], name: "index_comments_on_book_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "daily_entries", force: :cascade do |t|
@@ -70,8 +43,6 @@ ActiveRecord::Schema.define(version: 2021_07_19_191937) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "books", "categories"
-  add_foreign_key "books", "collections"
   add_foreign_key "books", "users"
   add_foreign_key "daily_entries", "users"
 end

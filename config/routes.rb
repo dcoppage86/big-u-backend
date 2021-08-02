@@ -5,10 +5,7 @@ Rails.application.routes.draw do
   post '/api/v1/signup', to: "api/v1/users#create"
   namespace :api do
     namespace :v1 do
-      resources :collections, only: [:index]
-      resources :categories, only: [:index]
       resources :daily_entries, only: [:index, :show, :create, :destroy]
-      resources :comments, only: [:index, :create, :destroy]
       resources :books, only: [:index, :create, :destroy]
       resources :users, only: [:index, :show, :create, :destroy]
       get 'auth/create'

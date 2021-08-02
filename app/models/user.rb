@@ -10,4 +10,5 @@ class User < ApplicationRecord
     has_many :daily_entries, dependent: :destroy
     has_many :comments
     has_many :books
+    has_many :categories, through: :books
 end
